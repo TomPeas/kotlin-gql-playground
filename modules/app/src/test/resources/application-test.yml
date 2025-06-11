@@ -1,0 +1,29 @@
+identity:
+  url: https://auth-dev.ciam.marksandspencer.com
+
+  jwks:
+    url: ${identity.url}/default/.well-known/jwks.json
+
+micronaut:
+  application:
+    # TODO [template]: Change this to the name of your application
+    name: micronaut-app-template-test
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          jwks:
+            identity:
+              url: ${identity.jwks.url}
+              key-type: EC
+
+
+mns:
+  opentelemetry:
+    logbackappender:
+      autoinstall: false
+
+otel:
+  register:
+    global: false

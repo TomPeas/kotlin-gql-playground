@@ -1,0 +1,52 @@
+[versions]
+android-lint-plugin = "8.9.2"
+androidx-gradleLint = "1.0.0-alpha03"
+foojay = "0.10.0"
+identity-jwt-test-helper = "0.0.30"
+junit = "5.12.2"
+jvm-target = "21"
+jvm-toolchain = "21"
+kotlin = "2.1.20"
+kotlin-ksp = "2.1.20-1.0.32"
+ktlint = "1.5.0"
+marksandspencer-conventions = "2.0.0-alpha6"
+marksandspencer-identity-auth = "0.1.0"
+marksandspencer-opentelemetry-core = "0.4.0"
+micronaut = "4.8.2"
+micronaut-gradle-plugin = "4.5.3"
+mockk = "1.14.0"
+shadow = "8.3.6"
+sonar = "6.0.1.5171"
+spotless = "7.0.2"
+micronaut-graphql = "4.7.0"
+apollographql-federationJava = "5.4.0"
+
+[libraries]
+androidx-gradleLint = { module = "androidx.lint:lint-gradle", version.ref = "androidx-gradleLint" }
+identity-jwt-test-helper = { module = "com.mns.libs:identity-jwt-test-helper", version.ref = "identity-jwt-test-helper" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit" } # Help Renovate understand update the version.
+ktlint = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint" } # Help Renovate understand update the version.
+marksandspencer-identity-auth-micronaut = { module = "com.mns.libs:identity-auth-micronaut", version.ref = "marksandspencer-identity-auth" }
+marksandspencer-opentelemetry-core = { module = "com.mns.libs:micronaut-opentelemetry-core", version.ref = "marksandspencer-opentelemetry-core" }
+micronaut-platform = { module = "io.micronaut.platform:micronaut-platform", version.ref = "micronaut" } # Help Renovate understand update the version.
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+micronaut-graphql = { module = "io.micronaut.graphql:micronaut-graphql", version.ref = "micronaut-graphql"}
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin"}
+apollographql-federationJava = { module = "com.apollographql.federation:federation-graphql-java-support", version.ref = "apollographql-federationJava"}
+
+[plugins]
+android-lint = { id = "com.android.lint", version.ref = "android-lint-plugin" }
+gradle-toolchains-foojay = { id = "org.gradle.toolchains.foojay-resolver-convention", version.ref = "foojay" }
+gradleup-shadow = { id = "com.gradleup.shadow", version.ref = "shadow" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "kotlin-ksp" }
+marksandspencer-commonJacoco = { id = "com.marksandspencer.common.jacoco", version.ref = "marksandspencer-conventions" }
+marksandspencer-commonKotlin = { id = "com.marksandspencer.common.kotlin", version.ref = "marksandspencer-conventions" }
+marksandspencer-commonSpotless = { id = "com.marksandspencer.common.spotless", version.ref = "marksandspencer-conventions" }
+marksandspencer-commonTesting = { id = "com.marksandspencer.common.testing", version.ref = "marksandspencer-conventions" }
+micronaut-aot = { id = "io.micronaut.aot", version.ref = "micronaut-gradle-plugin" }
+micronaut-application = { id = "io.micronaut.application", version.ref = "micronaut-gradle-plugin" }
+micronaut-catalog = { id = "io.micronaut.platform.catalog", version.ref = "micronaut-gradle-plugin" }
+sonar = { id = "org.sonarqube", version.ref = "sonar" }
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+

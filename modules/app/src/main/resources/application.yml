@@ -1,0 +1,53 @@
+micronaut:
+  application:
+    # TODO [template]: Change this to your project name
+    name: micronaut-app-template
+    version: ${GITHUB_SHA:unknown}
+  # This is required for identity to inject its types (the type is a placeholder)
+  codec:
+    json:
+      additional-types:
+        - application/health+json
+  openapi:
+    target:
+      file: src/main/resources/swagger/openapi.yaml
+  caches:
+    jwks:
+      # Fixes bug introduced in Micronaut Security 4.7.1
+      # https://github.com/micronaut-projects/micronaut-security/issues/1881
+      expire-after-write: 60s
+
+
+# For specific configuration see: https://github.com/DigitalInnovation/micronaut-opentelemetry
+mns:
+  opentelemetry:
+    logbackappender:
+      autoinstall: true
+
+otel:
+  register:
+    global: true
+
+# Values for the OpenAPI annotations
+# TODO [template]: Change this to your project name
+api:
+  title: Kotlin Template
+  description: Kotlin Template API
+
+# For specific configuration see: https://github.com/DigitalInnovation/identity-auth-micronaut-lib
+#identity:
+#  auth:
+#    otel:
+#      spans:
+#        jwt-claims:
+#          enabled: false
+
+health:
+  refresh:
+    interval:
+      millis: 600000
+
+graphql:
+  enabled: true
+  graphiql:
+    enabled: true

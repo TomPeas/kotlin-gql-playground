@@ -1,0 +1,18 @@
+#identity:
+#  url: https://auth-dev.ciam.marksandspencer.com
+#
+#  jwks:
+#    url: ${identity.url}/default/.well-known/jwks.json
+
+micronaut:
+  application:
+    # TODO [template]: Change this to your project name
+    name: micronaut-app-template-local
+
+
+otel:
+  exporter:
+    otlp:
+      # Assumes you are running aspire locally with default configuration
+      # https://learn.microsoft.com/en-us/dotnet/aspire/fundamentals/dashboard/standalone?tabs=bash
+      endpoint: "http://localhost:4317"

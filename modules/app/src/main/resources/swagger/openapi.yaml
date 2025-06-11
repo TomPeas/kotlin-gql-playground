@@ -1,0 +1,95 @@
+openapi: 3.0.1
+info:
+  title: Kotlin Template
+  description: Kotlin Template API
+  version: unknown
+tags:
+- name: Health
+  description: API to check service health status
+paths:
+  /health:
+    get:
+      tags:
+      - Health
+      summary: Get health status
+      description: Returns the health status of the service
+      operationId: health
+      responses:
+        "200":
+          description: Health status retrieved successfully
+          content:
+            application/health+json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+components:
+  schemas:
+    CheckDetail:
+      required:
+      - checked
+      - componentName
+      - componentType
+      - status
+      type: object
+      properties:
+        componentName:
+          type: string
+        componentType:
+          $ref: "#/components/schemas/ComponentType"
+        status:
+          $ref: "#/components/schemas/HealthStatus"
+        checked:
+          type: string
+          format: date-time
+        error:
+          nullable: true
+          allOf:
+          - $ref: "#/components/schemas/ErrorDetail"
+        version:
+          type: string
+          nullable: true
+    ComponentType:
+      type: string
+      enum:
+      - COMPONENT
+      - SERVICE
+      - DEPENDENCY
+    ErrorDetail:
+      type: object
+      properties:
+        errorType:
+          type: string
+          nullable: true
+        errorCode:
+          type: string
+          nullable: true
+        errorMessage:
+          type: string
+          nullable: true
+    HealthResponse:
+      required:
+      - status
+      type: object
+      properties:
+        status:
+          description: "Indicates the service status, its computed from the service\
+            \ components"
+          example: OK
+          allOf:
+          - $ref: "#/components/schemas/HealthStatus"
+        version:
+          type: string
+          description: Public version of the service
+          nullable: true
+          example: c1b2b3b4b5b6b7b8b9b0
+        checks:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/CheckDetail"
+          description: Detailed health statuses of components
+          nullable: true
+    HealthStatus:
+      type: string
+      enum:
+      - OK
+      - FAIL
+      - DEGRADED
